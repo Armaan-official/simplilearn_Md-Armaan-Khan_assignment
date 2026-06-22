@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setInterval and clearInterval</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      #title {
+        margin-top: -60px;
+      }
+
+      #box {
+        display: flex;
+        gap: 100px;
+        font-size: 1.2rem;
+      }
+
+      #container {
+        height: 550px;
+        width: 450px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 70px;
+        border: 1px solid;
+        font-size: 1.3rem;
+      }
+
+      #demo {
+        font-size: 1.6rem;
+      }
+
+      #btn {
+        margin-bottom: -60px;
+        padding: 10px 25px;
+        border-radius: 10px;
+        border: 1px solid;
+        box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.6);
+        font-weight: bold;
+        background: green;
+        color: white;
+      }
+
+      #btn:hover {
+        cursor: pointer;
+        background: lightgreen;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1 id="title">Javascript Test</h1>
+      <div id="box">
+        <div id="date"><span>Date:</span></div>
+        <div id="time"><span>Time:</span> 10 mins</div>
+      </div>
+      <p id="duration">Test Duration: <span>10:00 mins</span></p>
+      <p id="demo">Hello we are into Demo Test</p>
+      <button id="btn" type="submit">Submit</button>
+    </div>
+
+    <script>
+      let date = document.querySelector("#date");
+      let duration = document.querySelector("#duration span");
+      let btn = document.querySelector("#btn");
+      let timer;
+      let time = 600;
+
+    //   clicking event
+      btn.addEventListener("click", () => {
+        clearInterval(timer);
+        alert("Test is complete");
+      });
+
+    //   test duration function checks the duration and auto-submits when time ends
+      function testDuration() {
+        timer = setInterval(() => {
+          time--;
+          duration.innerHTML = `${String(Math.floor(time / 60)).padStart(2, '0')}:${String(time % 60).padStart(2, "0")} mins`;
+          if (time === 0) {
+            clearInterval(timer);
+            btn.click();
+          }
+        }, 1000);
+      }
+
+    //  setting the current date
+      let currDate = new Date();
+      let dd = String(currDate.getDate()).padStart(2, '0');
+      let mm = String(currDate.getMonth() + 1).padStart(2, '0');
+      let yy = currDate.getFullYear();
+
+      date.innerHTML = `Date: ${dd}-${mm}-${yy}`
+
+      testDuration();
+    </script>
+  </body>
+</html>

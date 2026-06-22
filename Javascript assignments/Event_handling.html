@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event handling</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        #container{
+            border: 1px solid;
+            width: 500px;
+            height: 400px;
+            border-radius: 15px;
+            background-color: antiquewhite;
+        }
+
+        #box{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            gap: 40px;
+        }
+
+        #box input{
+            width: 90%;
+            height: 30px;
+            border-radius: 10px;
+            outline: none;
+            border: 1px solid;
+            padding: 5px;
+        }
+
+
+        #press-btn{
+            padding: 10px;
+            border-radius: 10px;
+            outline: none;
+            border: 1px solid;
+            font-weight: bold;
+            background: lightgray;
+            box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        #box p{
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        #red-btn{
+            width: 80px;
+            height: 50px;
+            background: red;
+            outline: none;
+            border: 1px solid;
+            margin-right: 20px;
+        }
+
+        #blue-btn{
+            width: 80px;
+            height: 50px;
+            background: blue;
+            outline: none;
+            border: 1px solid;
+            margin-right: 20px;
+        }
+
+        #green-btn{
+            width: 80px;
+            height: 50px;
+            background: green;
+            outline: none;
+            border: 1px solid;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="container">
+    <div id="box">
+        <h1>Enter the number</h1>
+        <input id="input" type="text" placeholder="Calculate factorial">
+        <button onclick="calculate()" id="press-btn">Find Factorial</button>
+        <p id="result">Result: <span>0</span></p>
+
+        <div class="themes">
+        <button onclick="redTheme()" id="red-btn"></button>
+        <button onclick="blueTheme()" id="blue-btn"></button>
+        <button onclick="greenTheme()" id="green-btn"></button>
+        </div>
+    </div>
+    </div>
+
+
+    <script>
+
+        // Color of the background
+        function redTheme(){
+            document.body.style.backgroundColor = 'red';
+        }
+        function blueTheme(){
+            document.body.style.backgroundColor = 'blue';
+        }
+        function greenTheme(){
+            document.body.style.backgroundColor = 'green';
+        }
+
+
+        // Calculating the factorial value
+
+        function findFactorial(n){
+            if (input.value === '') return 0;
+            if(n < 0) return;
+            if (n === 0 || n === 1) return 1;
+            else return n * findFactorial(n-1);
+        }
+
+        function calculate(){
+            let input = document.querySelector('#input');
+            let displayResult = findFactorial(Number(input.value));
+            document.querySelector('#result span').innerHTML = displayResult;
+        }
+
+    </script>
+    
+</body>
+</html>

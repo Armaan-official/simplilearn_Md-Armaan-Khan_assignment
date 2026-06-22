@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Selectors</title>
+    <style>
+      * {
+        margin: 0;
+        border: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        position: relative;
+      }
+
+      body::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("https://images.pexels.com/photos/28976215/pexels-photo-28976215.jpeg")
+          no-repeat center center / cover;
+        opacity: 0.5;
+        z-index: -1;
+      }
+
+      .page {
+        width: 90%;
+        height: 90%;
+        background: white;
+        padding: 10px 20px;
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: red;
+      }
+
+      .about h3 {
+        color: green;
+      }
+
+      .about span {
+        color: crimson;
+      }
+
+      h3 {
+        margin-bottom: 10px;
+      }
+
+      h4 {
+        margin-bottom: 10px;
+      }
+      p {
+        margin-bottom: 10px;
+      }
+
+      .food {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        font-size: 10px;
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <h1 id="title">Food Bolg</h1>
+
+      <div class="about">
+        <h3>About Blogger</h3>
+        <p>
+          <span
+            >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt
+            beatae explicabo, magnam provident praesentium officiis quia, labore
+            dolor fugit quaerat nulla eveniet expedita alias eum perferendis
+            neque</span
+          >
+          <span
+            >repellat rem facere similique, maxime rerum nesciunt error illum
+            adipisci. Ex, fuga eos voluptatem explicabo culpa quas et libero
+            praesentium qui nobis, tempora at fugiat ad. Veniam at sapiente
+            nihil facilis</span
+          >
+          <span
+            >possimus magni? Voluptatibus mollitia veritatis suscipit nulla quas
+            magnam, cumque nam deserunt officiis voluptate culpa distinctio
+            officia sint ratione dignissimos sunt obcaecati</span
+          >.
+        </p>
+      </div>
+
+      <div class="food">
+        <h4>Food Varieties</h4>
+        <ol>
+          <li>Indian</li>
+          <li>Italian</li>
+          <li>Chinese</li>
+          <li>South Indian</li>
+        </ol>
+      </div>
+
+      <div class="menu">
+        <div class="one">
+          <h4>Indian Food</h4>
+          <p class="para-1">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias dolor
+            est laboriosam hic dolores ab eaque facere autem voluptatem, ratione
+            repellat harum labore, quod facilis amet asperiores? Cumque est quam
+            dolorem commodi voluptates ea dolor ipsum mollitia, molestiae,
+            blanditiis id corporis sapiente doloribus eos perspiciatis neque ex
+            repudiandae, obcaecati fugit..
+          </p>
+        </div>
+        <div class="two">
+          <h4>Italian Food</h4>
+          <p class="para-2">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Architecto, atque maxime! Maxime sint, rem error quis tenetur,
+            consequuntur pariatur dicta, animi harum corrupti maiores voluptatem
+            nisi enim fugiat alias cumque? Dolor fugiat excepturi maxime a ipsam
+            minus sint sit labore vitae laborum? Vero ad mollitia similique?
+            Esse earum dignissimos blanditiis labore aliquid modi fugit aliquam
+            necessitatibus suscipit? Blanditiis, fugiat animi.
+          </p>
+        </div>
+        <div class="three">
+          <h4>Chinese Food</h4>
+          <p class="para-3">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex et
+            fugit assumenda dolore similique ullam asperiores harum eum
+            accusamus ipsum blanditiis explicabo doloribus distinctio tenetur,
+            minus vero mollitia impedit quis ea sapiente nostrum cumque,
+            quibusdam aperiam. Optio iusto suscipit voluptates fuga neque quidem
+            recusandae, est cum? Repellendus culpa enim id!
+          </p>
+        </div>
+        <div class="four">
+          <h4>South Indian Food</h4>
+          <p class="para-4">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem
+            qui necessitatibus harum! Et minima voluptatibus cum similique
+            officiis reiciendis ullam dignissimos maxime quaerat impedit
+            delectus quo nobis ea, doloribus quibusdam sapiente vitae suscipit
+            ipsa aspernatur voluptatem totam dolores? Corporis, fuga?
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comment the script code to see the changes made -->
+
+    <script>
+      // page title color change
+      document.getElementById("title").style.color = "blue";
+
+      // about header color change
+      document.querySelector(".about h3").style.color = "red";
+      document.querySelector(".about h3").style.fontFamily = "Georgia";
+
+      // about paragraph color change
+      document
+        .querySelectorAll(".about span")
+        .forEach((span) => (span.style.color = "violet"));
+      document.querySelector(".about span").style.color = "blue";
+
+      // list font-size and color change
+      document.querySelector(".food").style.fontSize = "13px";
+      document.querySelector(".food").style.color = "orange";
+
+      // menu color and font-size change
+      document
+        .querySelectorAll(".menu p")
+        .forEach((menu) => (menu.style.color = "red"));
+      document.getElementsByClassName("para-2")[0].style.color = "grey";
+      document.getElementsByClassName("para-4")[0].style.color = "grey";
+      document.getElementsByClassName("para-2")[0].style.fontSize = "15px";
+      document.getElementsByClassName("para-4")[0].style.fontSize = "15px";
+    </script>
+  </body>
+</html>
