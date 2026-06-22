@@ -79,9 +79,11 @@
       let duration = document.querySelector("#duration span");
       let btn = document.querySelector("#btn");
       let timer;
-      let time = 600;
 
-    //   clicking event
+      // converting minutes into seconds
+      let time = 10 * 60;
+
+    //   clicking event for submit button
       btn.addEventListener("click", () => {
         clearInterval(timer);
         alert("Test is complete");
@@ -91,7 +93,7 @@
       function testDuration() {
         timer = setInterval(() => {
           time--;
-          duration.innerHTML = `${String(Math.floor(time / 60)).padStart(2, '0')}:${String(time % 60).padStart(2, "0")} mins`;
+          duration.innerHTML = `${String(Math.floor((time) / 60)).padStart(2, '0')}:${String(time % 60).padStart(2, "0")} mins`;
           if (time === 0) {
             clearInterval(timer);
             btn.click();
