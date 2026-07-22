@@ -41,7 +41,7 @@ Promise.all([p5, p2, p3, p1, p6, p4])
     .then((result) => console.log(`This is for the (.all) method: ${result}`))
     .catch((error) => console.log(error));
 
-// running with .rate method
+// running with .race method
 Promise.race([p5, p2, p3, p1, p6, p4])
     .then((result) => console.log(`This is for the (.race) method: ${result}`))
     .catch((error) => console.log(error));

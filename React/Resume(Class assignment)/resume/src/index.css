@@ -1,0 +1,28 @@
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #212121;
+}
+#resume {
+  display: flex;
+  justify-content: center;
+  align-items: first baseline;
+  flex-direction: column;
+  background-color: #414141;
+  color: white;
+  width: 650px;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+#education > ul {
+ line-height: 30px;
+}
+
+#skills > ul {
+ line-height: 30px;
+}
+
+
