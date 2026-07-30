@@ -75,7 +75,7 @@ class App extends React.Component {
       <div id="container">
 
         <h3>React Timer App</h3>
-        {this.state.isFinished && <p id="message">Time's up!</p>}
+        {this.state.isFinished && this.startTimer === null && <p id="message">Time's up!</p>}
 
         <div id="timer">
           <input type="number" 
