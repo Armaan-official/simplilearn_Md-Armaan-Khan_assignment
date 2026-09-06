@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - FreshBasket</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="container navbar">
+        <a href="index.html" class="logo">Fresh<span>Basket</span></a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html" class="active">Cart 🛒</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container page">
+
+    <h1>Your Shopping Cart</h1>
+
+    <div class="cart-container">
+
+        <div id="cart-items"></div>
+
+        <div class="cart-summary">
+            <h2>Order Summary</h2>
+
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="subtotal">₹0</span>
+            </div>
+
+            <div class="summary-row">
+                <span>Delivery</span>
+                <span>₹40</span>
+            </div>
+
+            <hr>
+
+            <div class="summary-total">
+                <span>Total</span>
+                <span id="total">₹40</span>
+            </div>
+
+            <button class="checkout-btn" onclick="checkout()">
+                Proceed to Checkout
+            </button>
+        </div>
+
+    </div>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 FreshBasket. All rights reserved.</p>
+</footer>
+
+<script>
+
+function displayCart() {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let cartItems = document.getElementById("cart-items");
+
+    cartItems.innerHTML = "";
+
+    if (cart.length === 0) {
+        cartItems.innerHTML = `
+            <div class="empty-cart">
+                <h2>Your cart is empty</h2>
+                <p>Add some fresh groceries to get started.</p>
+                <a href="shop.html" class="btn">Continue Shopping</a>
+            </div>
+        `;
+
+        document.getElementById("subtotal").textContent = "₹0";
+        document.getElementById("total").textContent = "₹0";
+
+        return;
+    }
+
+    let subtotal = 0;
+
+    cart.forEach((item, index) => {
+
+        let itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+
+        cartItems.innerHTML += `
+            <div class="cart-item">
+
+                <div>
+                    <h3>${item.name}</h3>
+                    <p>₹${item.price} each</p>
+                </div>
+
+                <div class="quantity">
+                    <button onclick="changeQuantity(${index}, -1)">−</button>
+
+                    <span>${item.quantity}</span>
+
+                    <button onclick="changeQuantity(${index}, 1)">+</button>
+                </div>
+
+                <strong>₹${itemTotal}</strong>
+
+                <button class="remove"
+                    onclick="removeItem(${index})">
+                    Remove
+                </button>
+
+            </div>
+        `;
+    });
+
+    document.getElementById("subtotal").textContent = "₹" + subtotal;
+    document.getElementById("total").textContent = "₹" + (subtotal + 40);
+}
+
+
+function changeQuantity(index, change) {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart[index].quantity += change;
+
+    if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    displayCart();
+}
+
+
+function removeItem(index) {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.splice(index, 1);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    displayCart();
+}
+
+
+function checkout() {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (cart.length === 0) {
+        alert("Your cart is empty.");
+        return;
+    }
+
+    alert("Thank you! Your order has been placed.");
+
+    localStorage.removeItem("cart");
+
+    displayCart();
+}
+
+
+displayCart();
+
+</script>
+
+</body>
+</html>

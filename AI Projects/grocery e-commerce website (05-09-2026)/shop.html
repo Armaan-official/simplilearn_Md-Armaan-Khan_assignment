@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - FreshBasket</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="container navbar">
+        <a href="index.html" class="logo">Fresh<span>Basket</span></a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shop.html" class="active">Shop</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html">Cart 🛒</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container page">
+    <h1>Shop Groceries</h1>
+    <p class="subtitle">Choose from our fresh and quality products.</p>
+
+    <div class="products">
+
+        <div class="product-card">
+            <div class="product-image">🍎</div>
+            <h3>Fresh Apples</h3>
+            <p>₹120 / kg</p>
+            <button onclick="addToCart('Fresh Apples', 120)">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">🥛</div>
+            <h3>Fresh Milk</h3>
+            <p>₹60 / litre</p>
+            <button onclick="addToCart('Fresh Milk', 60)">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">🍅</div>
+            <h3>Tomatoes</h3>
+            <p>₹80 / kg</p>
+            <button onclick="addToCart('Tomatoes', 80)">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">🥕</div>
+            <h3>Fresh Carrots</h3>
+            <p>₹70 / kg</p>
+            <button onclick="addToCart('Fresh Carrots', 70)">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">🍌</div>
+            <h3>Bananas</h3>
+            <p>₹50 / dozen</p>
+            <button onclick="addToCart('Bananas', 50)">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">🥚</div>
+            <h3>Eggs</h3>
+            <p>₹90 / dozen</p>
+            <button onclick="addToCart('Eggs', 90)">
+                Add to Cart
+            </button>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2026 FreshBasket. All rights reserved.</p>
+</footer>
+
+<script>
+function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let existingProduct = cart.find(item => item.name === name);
+
+    if (existingProduct) {
+        existingProduct.quantity++;
+    } else {
+        cart.push({
+            name: name,
+            price: price,
+            quantity: 1
+        });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert(name + " added to cart!");
+}
+</script>
+
+</body>
+</html>

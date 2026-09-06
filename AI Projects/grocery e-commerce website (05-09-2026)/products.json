@@ -1,0 +1,48 @@
+{
+    "store": "FreshBasket",
+    "currency": "INR",
+    "products": [
+        {
+            "id": 1,
+            "name": "Fresh Apples",
+            "category": "Fruits",
+            "price": 120,
+            "unit": "kg"
+        },
+        {
+            "id": 2,
+            "name": "Fresh Milk",
+            "category": "Dairy",
+            "price": 60,
+            "unit": "litre"
+        },
+        {
+            "id": 3,
+            "name": "Tomatoes",
+            "category": "Vegetables",
+            "price": 80,
+            "unit": "kg"
+        },
+        {
+            "id": 4,
+            "name": "Fresh Carrots",
+            "category": "Vegetables",
+            "price": 70,
+            "unit": "kg"
+        },
+        {
+            "id": 5,
+            "name": "Bananas",
+            "category": "Fruits",
+            "price": 50,
+            "unit": "dozen"
+        },
+        {
+            "id": 6,
+            "name": "Eggs",
+            "category": "Dairy",
+            "price": 90,
+            "unit": "dozen"
+        }
+    ]
+}
