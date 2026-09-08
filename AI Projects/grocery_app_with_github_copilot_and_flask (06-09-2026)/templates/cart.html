@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Your basket — gather{% endblock %}
+{% block content %}
+<section class="page-intro compact"><p class="eyebrow">YOUR GATHERING</p><h1>Your basket.</h1><p>Everything you need, all in one place.</p></section>
+<section class="cart-layout"><div class="cart-items"><div class="cart-empty"><div class="empty-basket">♧</div><h2>Your basket is waiting.</h2><p>Fill it with something fresh and delicious.</p><a class="button button-dark" href="{{ url_for('products') }}">Explore groceries <span>→</span></a></div></div><aside class="order-summary"><h2>Order summary</h2><div class="summary-row"><span>Subtotal</span><strong class="summary-subtotal">$0.00</strong></div><div class="summary-row muted"><span>Delivery</span><span>Free</span></div><div class="summary-total"><span>Total</span><strong class="summary-total-value">$0.00</strong></div><button class="button button-dark checkout-button" disabled>Continue to checkout <span>→</span></button><p class="secure-note">✦ Secure checkout · Free delivery over $50</p></aside></section>
+{% endblock %}

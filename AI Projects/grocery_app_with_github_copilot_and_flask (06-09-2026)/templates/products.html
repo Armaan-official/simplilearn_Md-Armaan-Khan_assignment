@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Shop fresh groceries — gather{% endblock %}
+{% block content %}
+<section class="page-intro"><p class="eyebrow">THE GATHER MARKET</p><h1>Good things,<br><em>gathered here.</em></h1><p>Browse our handpicked selection of everyday essentials and little luxuries.</p></section>
+<section class="shop-layout">
+    <aside class="shop-sidebar"><p class="filter-label">Browse by</p><a class="{{ 'selected' if selected_category == 'All' else '' }}" href="{{ url_for('products') }}">All products <span>{{ products|length if selected_category == 'All' else '—' }}</span></a>{% for category in categories %}<a class="{{ 'selected' if selected_category == category.name else '' }}" href="{{ url_for('products', category=category.name) }}">{{ category.name }} <span>›</span></a>{% endfor %}<div class="sidebar-note"><strong>Need a little inspiration?</strong><p>Build your box around what’s in season.</p></div></aside>
+    <div class="shop-results"><div class="results-toolbar"><p><strong>{{ products|length }}</strong> products{% if query %} for “{{ query }}”{% endif %}</p><form class="search-form" action="{{ url_for('products') }}"><input type="search" name="q" value="{{ query }}" placeholder="Search groceries"><button aria-label="Search">⌕</button></form><button class="sort-button">Sort: Featured <span>⌄</span></button></div><div class="product-grid">{% for product in products %}{% include "_product_card.html" %}{% else %}<div class="empty-state"><span>⌕</span><h2>No groceries found</h2><p>Try a different search or browse all products.</p><a class="button button-dark" href="{{ url_for('products') }}">View all</a></div>{% endfor %}</div></div>
+</section>
+{% endblock %}

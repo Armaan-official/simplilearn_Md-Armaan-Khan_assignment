@@ -1,0 +1,5 @@
+<article class="product-card" data-product-id="{{ product.id }}" data-name="{{ product.name }}" data-price="{{ product.price }}">
+    <div class="product-image-wrap"><img src="{{ product.image }}" alt="{{ product.name }}" loading="lazy"><span class="product-badge {{ product.color }}">{{ product.badge }}</span><button class="heart-button" data-favourite="{{ product.id }}" aria-label="Add {{ product.name }} to favourites">♡</button></div>
+    <div class="product-info"><div><h3>{{ product.name }}</h3><p>{{ product.unit }}</p></div><span class="rating">★ {{ product.rating }}</span></div>
+    <div class="product-buy"><strong>${{ "%.2f"|format(product.price) }}</strong><button class="add-button" data-add="{{ product.id }}">Add <span>+</span></button></div>
+</article>
